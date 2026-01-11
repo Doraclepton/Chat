@@ -7,7 +7,7 @@ from PyQt6.QtCore import pyqtSignal, QObject
 # Настройки
 BROKER = "broker.emqx.io"
 PORT = 1883
-TOPIC = "python/global_chat_secure_2026_v2"  # Уникальный топик
+TOPIC = "python/global_chat_secure_2026_v2"  
 
 
 class Signals(QObject):
@@ -47,7 +47,7 @@ class ChatApp(QMainWindow):
         container.setLayout(main_layout)
         self.setCentralWidget(container)
 
-        # --- Signals & MQTT ---
+        # MQTT 
         self.signals = Signals()
         # Теперь метод точно существует и виден
         self.signals.msg_received.connect(self.display_message)
@@ -128,7 +128,6 @@ class ChatApp(QMainWindow):
 
         self.msg_input.clear()
 
-    # Тот самый метод, который вызывал ошибку
     def display_message(self, text):
         self.log.append(text)
 
